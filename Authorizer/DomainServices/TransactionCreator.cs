@@ -1,8 +1,5 @@
 ﻿using Authorizer.Models;
 using Authorizer.Repositories.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Authorizer.DomainServices
 {

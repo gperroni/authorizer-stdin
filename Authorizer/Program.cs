@@ -1,5 +1,6 @@
-﻿using Authorizer.CrossCutting;
-using Authorizer.Services;
+﻿using Authorizer.ApplicationServices;
+using Authorizer.CrossCutting;
+using Newtonsoft.Json;
 using System;
 using System.IO;
 using System.Linq;

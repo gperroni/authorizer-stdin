@@ -33,7 +33,7 @@ namespace Authorizer.ApplicationServices
         {
             try
             {
-                var fileLine = await File.ReadLineAsync();
+                var fileLine = await File.ReadLineAsync() ?? "";
                 var accountRepository = DependencyContainer.GetService<IAccountRepository>();
 
                 if (RegexHelper.ComandAccount.IsMatch(fileLine))

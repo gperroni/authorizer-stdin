@@ -12,3 +12,13 @@ C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\Micros
 C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
 C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\Authorizer.deps.json
+C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\Authorizer.runtimeconfig.json
+C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\Authorizer.runtimeconfig.dev.json
+C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\Authorizer.dll
+C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\Authorizer.pdb
+C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\System.Interactive.Async.dll
+C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\System.Linq.Async.dll
+C:\Users\gperr\source\repos\Authorizer\Authorizer\obj\Debug\netcoreapp3.1\Authorizer.dll
+C:\Users\gperr\source\repos\Authorizer\Authorizer\obj\Debug\netcoreapp3.1\Authorizer.pdb
+C:\Users\gperr\source\repos\Authorizer\Authorizer\obj\Debug\netcoreapp3.1\Authorizer.genruntimeconfig.cache
