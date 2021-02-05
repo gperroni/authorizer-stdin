@@ -20,10 +20,10 @@ namespace Authorizer.DomainServices
             var savedAccount = AccountRepository.Get();
             account.FailIf(() => savedAccount != null, "account-already-initialized");
 
-            if (account?.Valid ?? false)
+            if (account.Valid)
                 AccountRepository.Create(account);
 
-            return account ?? new Account(false, 0);
+            return account;
         }
     }
 }

@@ -20,8 +20,13 @@ namespace Authorizer.Models
             Errors.Clear();
         }
 
+        public IList<string> GetErrors()
+        {
+            return Errors;
+        }
+
         [JsonIgnore]
-        public virtual bool Valid => !Errors.Any();
+        public bool Valid => !Errors.Any();
 
     }
 }

@@ -9,11 +9,17 @@ namespace Authorizer.Models
     [JsonObject("account")]
     public class Account : Entity
     {
-
         public Account(bool activeCard, int startAmount)
         {
             ActiveCard = activeCard;
             StartAmount = startAmount;
+        }
+
+        public Account(bool activeCard, int startAmount, string error)
+        {
+            ActiveCard = activeCard;
+            StartAmount = startAmount;
+            FailIf(() => true, error);
         }
 
         public Account() { }
@@ -29,12 +35,6 @@ namespace Authorizer.Models
 
         [JsonProperty("available-limit")]
         public int Amount => StartAmount - Transactions.Sum(q => q.Amount);
-
-        [JsonIgnore]
-        public bool IsInitialized => ActiveCard && StartAmount > 0;
-
-        [JsonIgnore]
-        public override bool Valid => IsInitialized && base.Valid;
 
         private IEnumerable<Transaction> GetLastTwoMinutesTransactions(Transaction transaction)
         {

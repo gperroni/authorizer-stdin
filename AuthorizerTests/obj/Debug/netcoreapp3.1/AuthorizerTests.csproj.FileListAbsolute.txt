@@ -89,7 +89,6 @@ C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\bin\Debug\netcoreapp3.1\A
 C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\obj\Debug\netcoreapp3.1\AuthorizerTests.csprojAssemblyReference.cache
 C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\obj\Debug\netcoreapp3.1\AuthorizerTests.AssemblyInfoInputs.cache
 C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\obj\Debug\netcoreapp3.1\AuthorizerTests.AssemblyInfo.cs
-C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\obj\Debug\netcoreapp3.1\AuthorizerTests.csproj.CoreCompileInputs.cache
 C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\bin\Debug\netcoreapp3.1\Authorizer.exe
 C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.MSTest.TestAdapter.dll
 C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\bin\Debug\netcoreapp3.1\Microsoft.VisualStudio.TestPlatform.MSTestAdapter.PlatformServices.Interface.dll
@@ -104,3 +103,6 @@ C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\obj\Debug\netcoreapp3.1\A
 C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\obj\Debug\netcoreapp3.1\AuthorizerTests.dll
 C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\obj\Debug\netcoreapp3.1\AuthorizerTests.pdb
 C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\obj\Debug\netcoreapp3.1\AuthorizerTests.genruntimeconfig.cache
+C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\bin\Debug\netcoreapp3.1\Castle.Core.dll
+C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\bin\Debug\netcoreapp3.1\Moq.dll
+C:\Users\gperr\source\repos\Authorizer\AuthorizerTests\obj\Debug\netcoreapp3.1\AuthorizerTests.csproj.CoreCompileInputs.cache

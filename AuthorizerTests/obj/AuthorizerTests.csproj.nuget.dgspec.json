@@ -59,6 +59,10 @@
               "target": "Package",
               "version": "[16.5.0, )"
             },
+            "Moq": {
+              "target": "Package",
+              "version": "[4.16.0, )"
+            },
             "System.Interactive.Async": {
               "target": "Package",
               "version": "[5.0.0, )"

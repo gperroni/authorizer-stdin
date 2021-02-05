@@ -12,12 +12,10 @@ namespace Authorizer.DomainServices
         }
         public Account Execute(Transaction transaction)
         {
-            var account = AccountRepository.Get() ?? new Account(false, 0);
-            account.FailIf(() => !account.IsInitialized, "account-not-initialized");
+            var account = AccountRepository.Get();
 
-            // Aqui provavelmente depende do retorno do EMAIL
-            if (!account.Valid)
-                return account;
+            if (account == null)
+                return new Account(false, 0, "account-not-initialized");
 
             account.AddTransaction(transaction);
             AccountRepository.Update(account);
