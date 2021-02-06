@@ -5,8 +5,6 @@ using AuthorizerTests.Builders;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace AuthorizerTests.CrossCutting
 {

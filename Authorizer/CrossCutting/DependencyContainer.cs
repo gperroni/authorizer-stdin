@@ -2,9 +2,6 @@
 using Authorizer.Repositories.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Authorizer.CrossCutting
 {

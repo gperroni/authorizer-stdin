@@ -1,7 +1,6 @@
 ﻿using Authorizer.CrossCutting.Extensions;
 using Authorizer.Models;
 using Newtonsoft.Json.Linq;
-using System;
 
 namespace Authorizer.CrossCutting
 {

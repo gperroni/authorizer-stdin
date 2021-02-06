@@ -1,7 +1,7 @@
 ﻿using Authorizer.DomainServices;
 using Authorizer.Models;
-using Authorizer.Repositories.Interfaces;
 using Authorizer.Properties;
+using Authorizer.Repositories.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;

@@ -1,13 +1,9 @@
 ﻿using Authorizer.DomainServices;
 using Authorizer.Models;
 using Authorizer.Repositories.Interfaces;
-using AuthorizerTests.Builders;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AuthorizerTests.DomainServices
 {
