@@ -1,4 +1,5 @@
-﻿using Authorizer.Models;
+﻿using Authorizer.CrossCutting.Extensions;
+using Authorizer.Models;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;

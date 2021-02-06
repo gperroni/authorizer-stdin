@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Authorizer.Properties;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,15 +56,17 @@ namespace Authorizer.Models
 
         public void AddTransaction(Transaction transaction)
         {
-            FailIf(() => !ActiveCard, "card-not-active");
-            FailIf(() => Amount - transaction.Amount < 0, "insufficient-limit");
+            FailIf(() => !ActiveCard, Resources.CARD_NOT_ACTIVE);
+            FailIf(() => Amount - transaction.Amount < 0, Resources.INSUFFICIENT_LIMIT );
 
             var lastTwoMinutesTransactions = GetLastTwoMinutesTransactions(transaction);
-            FailIf(() => lastTwoMinutesTransactions.Count() >= 3, "high-frequency-small-interval");
-            FailIf(() => lastTwoMinutesTransactions.Any(q => q.Equals(transaction)), "doubled-transaction");
+            FailIf(() => lastTwoMinutesTransactions.Count() >= 3, Resources.HIGH_FREQUENCY_SMALL_INTERVAL);
+            FailIf(() => lastTwoMinutesTransactions.Any(q => q.Equals(transaction)), Resources.DOUBLED_TRANSACTION);
 
             if (Valid)
                 Transactions.Add(transaction);
         }
+
     }
+
 }

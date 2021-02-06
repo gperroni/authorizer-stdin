@@ -22,3 +22,5 @@ C:\Users\gperr\source\repos\Authorizer\Authorizer\bin\Debug\netcoreapp3.1\System
 C:\Users\gperr\source\repos\Authorizer\Authorizer\obj\Debug\netcoreapp3.1\Authorizer.dll
 C:\Users\gperr\source\repos\Authorizer\Authorizer\obj\Debug\netcoreapp3.1\Authorizer.pdb
 C:\Users\gperr\source\repos\Authorizer\Authorizer\obj\Debug\netcoreapp3.1\Authorizer.genruntimeconfig.cache
+C:\Users\gperr\source\repos\Authorizer\Authorizer\obj\Debug\netcoreapp3.1\Authorizer.Properties.Resources.resources
+C:\Users\gperr\source\repos\Authorizer\Authorizer\obj\Debug\netcoreapp3.1\Authorizer.csproj.GenerateResource.cache

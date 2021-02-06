@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Authorizer.CrossCutting.Extensions;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -7,12 +8,7 @@ namespace AuthorizerTests.Builders
 {
     public class CommandFileBuilder
     {
-        private string File { get; set; }
-
-        public CommandFileBuilder()
-        {
-            File = "";
-        }
+        private string File { get; set; } = "";
 
         public CommandFileBuilder AddAccountCommand(bool activeCard, int availableLimit)
         {
@@ -24,7 +20,7 @@ namespace AuthorizerTests.Builders
 
         public CommandFileBuilder AddTransactionCommand(string merchant, int amount, DateTime date)
         {
-            var formattedDate = date.ToString();
+            var formattedDate = date.ToStringWithMilliseconds();
             File += $@"{{""transaction"": {{""merchant"": ""{merchant}"", ""amount"": {amount}, ""time"":""{formattedDate}""}} }}";
             File += Environment.NewLine;
 

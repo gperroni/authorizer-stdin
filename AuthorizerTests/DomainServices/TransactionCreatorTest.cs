@@ -1,6 +1,7 @@
 ﻿using Authorizer.DomainServices;
 using Authorizer.Models;
 using Authorizer.Repositories.Interfaces;
+using Authorizer.Properties;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
@@ -70,8 +71,9 @@ namespace AuthorizerTests.DomainServices
             var savedAccount = TransactionCreator.Execute(transaction);
 
             //Assert
-            Assert.AreEqual(savedAccount.GetErrors().Count(), 1);
-            Assert.AreEqual(savedAccount.GetErrors().First(), "insufficient-limit");
+            var errors = savedAccount.GetErrors();
+            Assert.AreEqual(errors.Count(), 1);
+            Assert.AreEqual(errors.First(), Resources.INSUFFICIENT_LIMIT);
             Assert.AreEqual(savedAccount.Amount, 10);
             Assert.AreEqual(savedAccount.Transactions.Count(), 1);
             AccountRepository.Verify(q => q.Update(account), Times.AtMostOnce);
@@ -89,9 +91,10 @@ namespace AuthorizerTests.DomainServices
             var savedAccount = TransactionCreator.Execute(transaction);
 
             //Assert
-            Assert.AreEqual(savedAccount.GetErrors().Count(), 2);
-            Assert.IsTrue(savedAccount.GetErrors().Contains("insufficient-limit"));
-            Assert.IsTrue(savedAccount.GetErrors().Contains("card-not-active"));
+            var errors = savedAccount.GetErrors();
+            Assert.AreEqual(errors.Count(), 2);
+            Assert.IsTrue(errors.Contains(Resources.INSUFFICIENT_LIMIT));
+            Assert.IsTrue(errors.Contains(Resources.CARD_NOT_ACTIVE));
             Assert.AreEqual(savedAccount.Amount, 100);
             Assert.AreEqual(savedAccount.Transactions.Count(), 0);
             AccountRepository.Verify(q => q.Update(account), Times.AtMostOnce);
@@ -108,8 +111,9 @@ namespace AuthorizerTests.DomainServices
             var savedAccount = TransactionCreator.Execute(transaction);
 
             //Assert
-            Assert.AreEqual(savedAccount.GetErrors().Count(), 1);
-            Assert.IsTrue(savedAccount.GetErrors().Contains("account-not-initialized"));
+            var errors = savedAccount.GetErrors();
+            Assert.AreEqual(errors.Count(), 1);
+            Assert.IsTrue(errors.Contains("account-not-initialized"));
             AccountRepository.Verify(q => q.Update(account), Times.Never);
 
         }
@@ -151,8 +155,9 @@ namespace AuthorizerTests.DomainServices
             var savedAccount = TransactionCreator.Execute(newTransaction);
 
             //Assert
-            Assert.AreEqual(savedAccount.GetErrors().Count(), 1);
-            Assert.IsTrue(savedAccount.GetErrors().Contains("high-frequency-small-interval"));
+            var errors = savedAccount.GetErrors();
+            Assert.AreEqual(errors.Count(), 1);
+            Assert.IsTrue(errors.Contains("high-frequency-small-interval"));
             Assert.AreEqual(savedAccount.Amount, 55);
             AccountRepository.Verify(q => q.Update(account), Times.AtMost(3));
         }
@@ -174,8 +179,8 @@ namespace AuthorizerTests.DomainServices
 
             //Assert
             Assert.AreEqual(savedAccount.GetErrors().Count(), 2);
-            Assert.IsTrue(savedAccount.GetErrors().Contains("high-frequency-small-interval"));
-            Assert.IsTrue(savedAccount.GetErrors().Contains("doubled-transaction"));
+            Assert.IsTrue(savedAccount.GetErrors().Contains(Resources.HIGH_FREQUENCY_SMALL_INTERVAL));
+            Assert.IsTrue(savedAccount.GetErrors().Contains(Resources.DOUBLED_TRANSACTION));
             Assert.AreEqual(savedAccount.Amount, 70);
             AccountRepository.Verify(q => q.Update(account), Times.AtMost(3));
         }

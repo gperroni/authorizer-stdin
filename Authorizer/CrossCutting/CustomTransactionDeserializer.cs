@@ -1,4 +1,5 @@
-﻿using Authorizer.Models;
+﻿using Authorizer.CrossCutting.Extensions;
+using Authorizer.Models;
 using Newtonsoft.Json.Linq;
 using System;
 
@@ -11,7 +12,7 @@ namespace Authorizer.CrossCutting
             return new Transaction(
                 jObject["transaction"].GetTypedProperty<int>("amount"),
                 jObject["transaction"].GetTypedProperty<string>("merchant"),
-                jObject["transaction"].GetTypedProperty<DateTime>("time"));
+                jObject["transaction"].ToDateTimeWithMiliseconds("time"));
         }
     }
 }

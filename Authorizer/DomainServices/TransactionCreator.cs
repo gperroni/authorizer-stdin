@@ -1,4 +1,5 @@
 ﻿using Authorizer.Models;
+using Authorizer.Properties;
 using Authorizer.Repositories.Interfaces;
 
 namespace Authorizer.DomainServices
@@ -15,7 +16,7 @@ namespace Authorizer.DomainServices
             var account = AccountRepository.Get();
 
             if (account == null)
-                return new Account(false, 0, "account-not-initialized");
+                return new Account(false, 0, Resources.ACCOUNT_NOT_INITIALIZED);
 
             account.AddTransaction(transaction);
             AccountRepository.Update(account);

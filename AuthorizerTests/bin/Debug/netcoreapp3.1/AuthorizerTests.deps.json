@@ -13,6 +13,7 @@
           "MSTest.TestFramework": "2.1.0",
           "Microsoft.NET.Test.Sdk": "16.5.0",
           "Moq": "4.16.0",
+          "Newtonsoft.Json": "12.0.3",
           "System.Interactive.Async": "5.0.0",
           "coverlet.collector": "1.2.0"
         },

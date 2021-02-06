@@ -1,4 +1,5 @@
 ﻿using Authorizer.Models;
+using Authorizer.Properties;
 using Authorizer.Repositories.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace Authorizer.DomainServices
         public Account Save(Account account)
         {
             var savedAccount = AccountRepository.Get();
-            account.FailIf(() => savedAccount != null, "account-already-initialized");
+            account.FailIf(() => savedAccount != null, Resources.ACCOUNT_ALREADY_INITIALIZED);
 
             if (account.Valid)
                 AccountRepository.Create(account);
