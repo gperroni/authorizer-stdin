@@ -1814,7 +1814,8 @@
         "dependencies": {
           "Microsoft.Extensions.Caching.Memory": "5.0.0",
           "Microsoft.Extensions.DependencyInjection": "5.0.1",
-          "Newtonsoft.Json": "12.0.3"
+          "Newtonsoft.Json": "12.0.3",
+          "System.Interactive.Async": "5.0.0"
         },
         "compile": {
           "bin/placeholder/Authorizer.dll": {}

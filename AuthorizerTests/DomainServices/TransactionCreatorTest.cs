@@ -125,7 +125,7 @@ namespace AuthorizerTests.DomainServices
             var account = new Account(true, 100);
             var dataCorrente = DateTime.Now;
             account.AddTransaction(new Transaction(20, "Mechant 1", dataCorrente.AddMinutes(-1)));
-            account.AddTransaction(new Transaction(10, "Mechant 1", dataCorrente));
+            account.AddTransaction(new Transaction(10, "Mechant 1", dataCorrente.AddMinutes(-2)));
             account.AddTransaction(new Transaction(15, "Mechant 1", dataCorrente));
             var newTransaction = new Transaction(55, "Mechant 1", dataCorrente.AddMinutes(1));
             AccountRepository.Setup(q => q.Get()).Returns(account);

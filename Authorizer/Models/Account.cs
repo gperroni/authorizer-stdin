@@ -37,20 +37,12 @@ namespace Authorizer.Models
 
         private IEnumerable<Transaction> GetLastTwoMinutesTransactions(Transaction transaction)
         {
-            // If time as 10:00, the method will get transactions between 09:59:00.000 and 10:00:59.999
             var dateTimeCurrentTransaction = transaction.Time;
-            var dateTimeMinutesAgo = dateTimeCurrentTransaction.AddMinutes(-1);
-
-            // Set time as HH:MM:00.000
-            dateTimeMinutesAgo = dateTimeMinutesAgo.AddSeconds(-dateTimeMinutesAgo.Second);
-            dateTimeMinutesAgo = dateTimeMinutesAgo.AddMilliseconds(-dateTimeMinutesAgo.Millisecond);
-
-            // Set time as HH:MM:59.999
-            dateTimeCurrentTransaction = dateTimeCurrentTransaction.AddSeconds(59 - dateTimeCurrentTransaction.Second);
-            dateTimeCurrentTransaction = dateTimeCurrentTransaction.AddMilliseconds(999 - dateTimeCurrentTransaction.Millisecond);
+            var dateTimeTwoMinutesAgo = dateTimeCurrentTransaction.AddMinutes(-2);
 
             return Transactions
-                    .Where(q => q.Time.CompareTo(dateTimeMinutesAgo) >= 0 && q.Time.CompareTo(dateTimeCurrentTransaction) <= 0);
+                    .Where(q => q.Time.CompareTo(dateTimeTwoMinutesAgo) >= 0 
+                             && q.Time.CompareTo(dateTimeCurrentTransaction) <= 0);
         }
 
         public void AddTransaction(Transaction transaction)
