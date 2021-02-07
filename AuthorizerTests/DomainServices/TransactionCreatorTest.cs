@@ -178,10 +178,39 @@ namespace AuthorizerTests.DomainServices
             var savedAccount = TransactionCreator.Execute(newTransaction);
 
             //Assert
-            Assert.AreEqual(savedAccount.GetErrors().Count(), 2);
-            Assert.IsTrue(savedAccount.GetErrors().Contains(Resources.HIGH_FREQUENCY_SMALL_INTERVAL));
-            Assert.IsTrue(savedAccount.GetErrors().Contains(Resources.DOUBLED_TRANSACTION));
+            var errors = savedAccount.GetErrors();
+            Assert.AreEqual(errors.Count(), 2);
+            Assert.IsTrue(errors.Contains(Resources.HIGH_FREQUENCY_SMALL_INTERVAL));
+            Assert.IsTrue(errors.Contains(Resources.DOUBLED_TRANSACTION));
             Assert.AreEqual(savedAccount.Amount, 70);
+            AccountRepository.Verify(q => q.Update(account), Times.AtMost(3));
+        }
+
+
+        [TestMethod]
+        public void ShouldReturnAllPossibleErrors()
+        {
+            //Arrenge
+            var account = new Account(true, 100);
+            var dataCorrente = DateTime.Now;
+            account.AddTransaction(new Transaction(20, "Mechant 1", dataCorrente.AddMinutes(-1)));
+            account.AddTransaction(new Transaction(10, "Mechant 1", dataCorrente.AddMinutes(-1)));
+            account.AddTransaction(new Transaction(60, "Mechant 1", dataCorrente.AddMinutes(-1)));
+            var newTransaction = new Transaction(20, "Mechant 1", dataCorrente);
+            account.ActiveCard = false;
+            AccountRepository.Setup(q => q.Get()).Returns(account);
+
+            //Action
+            var savedAccount = TransactionCreator.Execute(newTransaction);
+
+            //Assert
+            var errors = savedAccount.GetErrors();
+            Assert.AreEqual(errors.Count(), 4);
+            Assert.IsTrue(errors.Contains(Resources.HIGH_FREQUENCY_SMALL_INTERVAL));
+            Assert.IsTrue(errors.Contains(Resources.DOUBLED_TRANSACTION));
+            Assert.IsTrue(errors.Contains(Resources.CARD_NOT_ACTIVE));
+            Assert.IsTrue(errors.Contains(Resources.INSUFFICIENT_LIMIT));
+            Assert.AreEqual(savedAccount.Amount, 10);
             AccountRepository.Verify(q => q.Update(account), Times.AtMost(3));
         }
     }
