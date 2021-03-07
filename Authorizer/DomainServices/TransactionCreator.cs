@@ -19,7 +19,9 @@ namespace Authorizer.DomainServices
                 return new Account(false, 0, Resources.ACCOUNT_NOT_INITIALIZED);
 
             account.AddTransaction(transaction);
-            AccountRepository.Update(account);
+
+            if (account.Valid)
+                AccountRepository.Update(account);
             return account;
         }
     }

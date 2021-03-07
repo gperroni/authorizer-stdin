@@ -92,7 +92,8 @@ namespace AuthorizerTests.DomainServices
 
             //Assert
             var errors = savedAccount.GetErrors();
-            Assert.AreEqual(errors.Count(), 2);
+            Assert.AreEqual(errors.Count(), 3);
+            Assert.IsTrue(errors.Contains(Resources.FIRST_TRANSACTION_TOO_HIGH));
             Assert.IsTrue(errors.Contains(Resources.INSUFFICIENT_LIMIT));
             Assert.IsTrue(errors.Contains(Resources.CARD_NOT_ACTIVE));
             Assert.AreEqual(savedAccount.Amount, 100);
@@ -136,6 +137,47 @@ namespace AuthorizerTests.DomainServices
             //Assert
             Assert.AreEqual(savedAccount.Transactions.Count(), 4);
             Assert.AreEqual(savedAccount.Amount, 0);
+            AccountRepository.Verify(q => q.Update(account), Times.Once);
+        }
+
+
+        [TestMethod]
+        public void ShouldNotCreateTransactionsIfFirstTransactionIsTooHigh()
+        {
+            //Arrenge
+            var account = new Account(true, 100);
+            var dataCorrente = DateTime.Now;
+            var newTransaction = new Transaction(91, "Mechant 1", dataCorrente);
+            AccountRepository.Setup(q => q.Get()).Returns(account);
+
+            //Action
+            var savedAccount = TransactionCreator.Execute(newTransaction);
+
+            //Assert
+            Assert.AreEqual(savedAccount.Transactions.Count(), 0);
+            Assert.AreEqual(savedAccount.GetErrors().Count(), 1);
+            Assert.IsTrue(savedAccount.GetErrors().Contains(Resources.FIRST_TRANSACTION_TOO_HIGH));
+            Assert.AreEqual(savedAccount.Amount, 100);
+            AccountRepository.Verify(q => q.Update(account), Times.Never);
+        }
+
+        [TestMethod]
+        public void ShouldNotValideSecondTransactionsOnFirstTransactionIsTooHigh()
+        {
+            //Arrenge
+            var account = new Account(true, 101);
+            var dataCorrente = DateTime.Now;
+            account.AddTransaction(new Transaction(1, "Mechant 1", dataCorrente));
+            var newTransaction = new Transaction(91, "Mechant 1", dataCorrente);
+            AccountRepository.Setup(q => q.Get()).Returns(account);
+
+            //Action
+            var savedAccount = TransactionCreator.Execute(newTransaction);
+
+            //Assert
+            Assert.AreEqual(savedAccount.Transactions.Count(), 2);
+            Assert.IsFalse(savedAccount.GetErrors().Any());
+            Assert.AreEqual(savedAccount.Amount, 9);
             AccountRepository.Verify(q => q.Update(account), Times.Once);
         }
 

@@ -97,6 +97,15 @@ namespace Authorizer.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to first-transaction-too-high.
+        /// </summary>
+        public static string FIRST_TRANSACTION_TOO_HIGH {
+            get {
+                return ResourceManager.GetString("FIRST_TRANSACTION_TOO_HIGH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to high-frequency-small-interval.
         /// </summary>
         public static string HIGH_FREQUENCY_SMALL_INTERVAL {

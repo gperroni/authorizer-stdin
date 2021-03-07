@@ -41,12 +41,14 @@ namespace Authorizer.Models
             var dateTimeTwoMinutesAgo = dateTimeCurrentTransaction.AddMinutes(-2);
 
             return Transactions
-                    .Where(q => q.Time.CompareTo(dateTimeTwoMinutesAgo) >= 0 
+                    .Where(q => q.Time.CompareTo(dateTimeTwoMinutesAgo) >= 0
                              && q.Time.CompareTo(dateTimeCurrentTransaction) <= 0);
         }
 
         public void AddTransaction(Transaction transaction)
         {
+            FailIf(() => !Transactions.Any() && transaction.Amount > Amount * 0.9, Resources.FIRST_TRANSACTION_TOO_HIGH);
+
             FailIf(() => !ActiveCard, Resources.CARD_NOT_ACTIVE);
             FailIf(() => Amount - transaction.Amount < 0, Resources.INSUFFICIENT_LIMIT);
 

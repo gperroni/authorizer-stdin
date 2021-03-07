@@ -129,6 +129,9 @@
   <data name="DOUBLED_TRANSACTION" xml:space="preserve">
     <value>doubled-transaction</value>
   </data>
+  <data name="FIRST_TRANSACTION_TOO_HIGH" xml:space="preserve">
+    <value>first-transaction-too-high</value>
+  </data>
   <data name="HIGH_FREQUENCY_SMALL_INTERVAL" xml:space="preserve">
     <value>high-frequency-small-interval</value>
   </data>
